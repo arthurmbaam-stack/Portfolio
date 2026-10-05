@@ -1,0 +1,130 @@
+.intro-vinil {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    background: #eee9df;
+    color: #343b36;
+    font-family: Arial, sans-serif;
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+.intro-vinil--saindo {
+    opacity: 0;
+}
+
+.intro-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    animation: aparecer-vinil 1s ease both;
+}
+
+.vinil {
+    width: min(280px, 65vw);
+    aspect-ratio: 1;
+    position: relative;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background:
+    conic-gradient(
+        from 45deg,
+        transparent 0deg,
+        #ffffff18 45deg,
+        transparent 90deg,
+        transparent 180deg,
+        #ffffff18 225deg,
+        transparent 270deg
+    ),
+    repeating-radial-gradient(
+        circle,
+        #171717 0px,
+        #171717 3px,
+        #303030 4px,
+        #171717 5px
+    );
+    border: 5px solid #202020;
+    box-shadow: 0 20px 40px #00000025;
+    animation: girar-vinil 3s linear infinite;
+}
+
+.vinil-etiqueta {
+    width: 36%;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 50%;
+    background: #a8b5a0;
+    color: #263329;
+}
+
+.vinil-etiqueta span {
+    font-family: Georgia, serif;
+    font-size: clamp(24px, 7vw, 36px);
+}
+
+.vinil-etiqueta small {
+    font-size: 7px;
+    letter-spacing: 1px;
+}
+
+.vinil-furo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #eee9df;
+    transform: translate(-50%, -50%);
+}
+
+.intro-nome {
+    margin: 32px 0 8px;
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 6vw, 36px);
+}
+
+.intro-legenda {
+    margin: 0;
+    font-size: 14px;
+    color: #596456;
+    text-align: center;
+}
+
+@keyframes aparecer-vinil {
+    from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.9);
+    }
+
+    to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes girar-vinil {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .intro-conteudo,
+    .vinil {
+    animation: none;
+    }
+
+    .intro-vinil {
+    transition: none;
+    }
+}
+

@@ -1,0 +1,49 @@
+.disco {
+    width: min(380px, 80vw);
+    aspect-ratio: 1;
+    position: relative;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background:
+    conic-gradient(from 45deg, transparent 0deg, #ffffff18 45deg, transparent 90deg,
+        transparent 180deg, #ffffff18 225deg, transparent 270deg),
+    repeating-radial-gradient(circle, #171717 0px, #171717 3px, #303030 4px, #171717 5px);
+    border: 5px solid #202020;
+    box-shadow: 0 20px 40px #00000025;
+}
+
+.disco--girando { animation: disco-girar 6s linear infinite; }
+
+.disco-etiqueta {
+    width: 36%;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 50%;
+    background: #a8b5a0;
+    color: #263329;
+}
+
+.disco-etiqueta span { font-family: Georgia, serif; font-size: clamp(28px, 7vw, 44px); }
+.disco-etiqueta small { font-size: 8px; letter-spacing: 1px; }
+
+.disco-furo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #eee9df;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes disco-girar { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+    .disco--girando { animation: none; }
+}

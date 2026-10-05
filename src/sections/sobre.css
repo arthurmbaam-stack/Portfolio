@@ -1,0 +1,30 @@
+.sobre-topo { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
+.sobre-topo .secao-titulo { margin: 0; }
+
+.sobre-idioma { display: flex; border: 1px solid var(--salvia-escuro); border-radius: 999px; overflow: hidden; }
+.sobre-idioma button {
+    padding: 6px 16px;
+    border: 0;
+    background: transparent;
+    color: var(--salvia-escuro);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+.sobre-idioma button[aria-pressed='true'] { background: var(--salvia-escuro); color: #fff; }
+
+.sobre-grade { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: start; }
+
+.sobre-texto { max-width: 65ch; }
+.sobre-texto p { margin: 0 0 16px; line-height: 1.75; }
+.sobre-texto h3 { margin: 32px 0 8px; font-family: var(--fonte-titulo); font-weight: 400; font-size: 22px; }
+.sobre-texto .botao { margin-top: 16px; }
+
+.sobre-formacao { padding: 24px; border-radius: 4px; }
+.sobre-formacao h3 { margin: 0 0 16px; font-family: var(--fonte-titulo); font-weight: 400; font-size: 22px; }
+.sobre-formacao p { margin: 4px 0 0; color: var(--texto-suave); font-size: 15px; }
+.sobre-periodo { font-size: 14px; }
+
+@media (max-width: 760px) {
+    bre-grade { grid-template-columns: 1fr; gap: 32px; }
+}

@@ -1,0 +1,107 @@
+:root {
+    --creme: #eee9df;
+    --papel: #f6f2ea;
+    --papel-borda: #ddd6c8;
+    --texto: #343b36;
+    --texto-suave: #596456;
+    --salvia: #a8b5a0;
+    --salvia-escuro: #6f8068;
+    --azul: #8fa3ad;
+    --azul-escuro: #5f7681;
+    --vinil: #171717;
+
+    --fonte-titulo: Georgia, 'Times New Roman', serif;
+    --fonte-corpo: Arial, Helvetica, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+    body {
+    margin: 0;
+    background: var(--creme);
+    color: var(--texto);
+    font-family: var(--fonte-corpo);
+    line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: var(--azul-escuro); }
+
+    :focus-visible {
+    outline: 3px solid var(--azul-escuro);
+    outline-offset: 3px;
+    }
+
+    .container {
+    width: min(1080px, 100% - 48px);
+    margin-inline: auto;
+    }
+
+    .secao { padding: 96px 0; }
+    .secao--alt { background: var(--papel); }
+
+    .secao-titulo {
+    margin: 0 0 12px;
+    font-family: var(--fonte-titulo);
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 400;
+    }
+
+    .secao-intro {
+    max-width: 60ch;
+    margin: 0 0 48px;
+    color: var(--texto-suave);
+    }
+
+    /* Textura de papel bem discreta, usada nas capas e cards */
+    .papel {
+    background-color: var(--papel);
+    background-image:
+        radial-gradient(#00000009 1px, transparent 1px),
+        radial-gradient(#ffffff40 1px, transparent 1px);
+    background-size: 5px 5px, 7px 7px;
+    background-position: 0 0, 2px 3px;
+    border: 1px solid var(--papel-borda);
+    }
+
+    /* Botões */
+    .botao {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: 2px solid var(--salvia-escuro);
+    font: inherit;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .botao--primario {
+    background: var(--salvia-escuro);
+    color: #fff;
+    }
+    .botao--primario:hover { background: #5b6b54; border-color: #5b6b54; }
+
+    .botao--secundario {
+    background: transparent;
+    color: var(--salvia-escuro);
+    }
+    .botao--secundario:hover { background: var(--salvia-escuro); color: #fff; }
+
+    .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: #a8b5a033;
+    color: var(--salvia-escuro);
+    font-size: 13px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+    }
