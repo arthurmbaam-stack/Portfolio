@@ -1,44 +1,102 @@
-# Portfólio
+<div align="center">
+  <h1> Portfólio — Arthur Moraes</h1>
 
-Portfólio em React + Vite com tema de discos de vinil. Cada área tem a sua página.
+  <img
+    src="https://skillicons.dev/icons?i=react,vite,js,html,css"
+    alt="React, Vite, JavaScript, HTML e CSS"
+  />
+</div>
 
-## Como rodar
+<hr />
 
-```bash
-npm install
-npm run dev      # desenvolvimento
-npm run build    # gera a pasta dist/
-```
+<h2>💿 Sobre o projeto</h2>
 
-## Páginas
+<p>
+  Este repositório reúne meu portfólio profissional, desenvolvido como
+  atividade acadêmica do curso de Engenharia de Software da PUC Minas.
+  O site apresenta minha trajetória, formação, projetos, experiências,
+  certificados e objetivos profissionais, além das minhas formas de contato.
+</p>
 
-As páginas usam rotas por hash (`/#/sobre`, `/#/projetos`...), então funcionam em qualquer
-hospedagem estática, inclusive GitHub Pages, sem configuração extra.
+<p>
+  Com uma identidade visual inspirada em discos de vinil e cores suaves,
+  o projeto conecta meu interesse por música ao desenvolvimento web.
+  A proposta é criar uma experiência que reflita minha personalidade
+  e valorize os trabalhos que venho desenvolvendo.
+</p>
 
-| Rota             | Arquivo                       |
-| ---------------- | ----------------------------- |
-| `/`              | `src/pages/Inicio.jsx`        |
-| `/#/sobre`       | `src/pages/Sobre.jsx`         |
-| `/#/projetos`    | `src/pages/Projetos.jsx`      |
-| `/#/certificados`| `src/pages/Certificados.jsx`  |
-| `/#/musicas`     | `src/pages/Musicas.jsx`       |
-| `/#/contato`     | `src/pages/Contato.jsx`       |
+<h2>⚙️ Tecnologias e ferramentas</h2>
 
-A ordem, os títulos e as cores das capas ficam em `src/data/rotas.js`.
+<table>
+  <tr>
+    <th>Categoria</th>
+    <th>Tecnologias</th>
+  </tr>
+  <tr>
+    <td>Interface</td>
+    <td>
+      <img
+        src="https://skillicons.dev/icons?i=react,html,css"
+        alt="React, HTML e CSS"
+      />
+    </td>
+  </tr>
+  <tr>
+    <td>Linguagem</td>
+    <td>
+      <img
+        src="https://skillicons.dev/icons?i=js"
+        alt="JavaScript"
+      />
+    </td>
+  </tr>
+  <tr>
+    <td>Ambiente e desenvolvimento</td>
+    <td>
+      <img
+        src="https://skillicons.dev/icons?i=vite,nodejs,vscode"
+        alt="Vite, Node.js e Visual Studio Code"
+      />
+    </td>
+  </tr>
+  <tr>
+    <td>Versionamento</td>
+    <td>
+      <img
+        src="https://skillicons.dev/icons?i=git,github"
+        alt="Git e GitHub"
+      />
+    </td>
+  </tr>
+</table>
 
-## Onde editar o conteúdo
+<h2>📌 Conteúdo planejado</h2>
 
-Todo o conteúdo está em `src/data/`:
+<ul>
+  <li>Introdução animada com um disco de vinil.</li>
+  <li>Apresentação pessoal e formação acadêmica.</li>
+  <li>Linha do tempo dos projetos desenvolvidos.</li>
+  <li>Experiências, certificados e objetivos profissionais.</li>
+  <li>Músicas favoritas e player de áudio.</li>
+  <li>Links de contato e formulário para envio de mensagens.</li>
+  <li>Layout responsivo para computadores e celulares.</li>
+</ul>
 
-- `perfil.js`: nome, foto, texto "sobre", formação, objetivos e currículo
-- `experiencias.js` e `interesses.js`: aparecem na página Sobre mim
-- `projetos.js`: a linha do tempo é ordenada pelo campo `ano`; use `repositorio` e `demo` para os links
-- `certificados.js`: coloque os arquivos (PDF ou imagem) em `public/certificados/`
-- `musicas.js`: use `arquivo` (áudio em `public/musicas/`) para ter play/pause no site, ou um link de faixa do Spotify para mostrar o player do Spotify
-- `contato.js`: e-mail, redes e o endereço do formulário (Formspree)
+<h2>🎯 Objetivo</h2>
 
-## Observações
+<p>
+  Apresentar meu desenvolvimento acadêmico e profissional enquanto
+  aprofundo meus conhecimentos em React e na construção de interfaces.
+  Meu principal interesse profissional é a cibersegurança, acompanhado
+  pelo interesse em desenvolvimento back-end com Java e Spring Boot.
+</p>
 
-- Os nomes de arquivos respeitam maiúsculas e minúsculas (o build em Linux, como no GitHub Actions ou na Vercel, diferencia).
-- As fontes (Fraunces, DM Sans e DM Mono) vêm do Google Fonts, com Georgia e fontes do sistema como reserva.
-- Se publicar em uma subpasta (como `usuario.github.io/portfolio/`), defina `base: '/portfolio/'` em `vite.config.js`.
+<hr />
+
+<div align="center">
+  <p>
+    Desenvolvido por
+    <a href="https://github.com/arthurmbaam-stack">Arthur Moraes</a>
+  </p>
+  <p><em>🚧 Portfólio em desenvolvimento.</em></p>
+</div>
