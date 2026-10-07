@@ -1,0 +1,113 @@
+.sobre-grade {
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    gap: 56px;
+    align-items: start;
+}
+
+.sobre-lateral {
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Foto como contracapa de disco */
+.sobre-foto {
+    margin: 0;
+    width: 100%;
+    padding: 12px 12px 16px;
+    border-radius: 3px;
+    box-shadow: var(--sombra-capa);
+}
+.sobre-foto img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 2px;
+}
+.sobre-foto figcaption {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+.sobre-foto figcaption strong {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--texto);
+}
+
+.sobre-conteudo { display: grid; gap: 56px; min-width: 0; }
+
+.sobre-texto { max-width: 65ch; }
+.sobre-texto p { margin: 0 0 16px; line-height: 1.75; }
+.sobre-texto p:last-child { margin-bottom: 0; }
+
+.sobre-nota { margin: -8px 0 24px; color: var(--texto-suave); }
+
+.sobre-formacao {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+.sobre-formacao li { padding: 20px; border-radius: 4px; }
+.sobre-formacao p { margin: 4px 0 0; color: var(--texto-suave); font-size: 15px; }
+.sobre-periodo { font-family: var(--fonte-mono); font-size: 13px !important; }
+
+/* Experiências em linha do tempo */
+.exp-lista { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--salvia); }
+
+.exp-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 24px;
+    padding: 0 0 36px 32px;
+}
+.exp-item:last-child { padding-bottom: 0; }
+.exp-item::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--vinil);
+    border: 4px solid var(--salvia);
+}
+
+.exp-periodo { margin: 0; color: var(--texto-suave); font-size: 14px; }
+.exp-item h3 { margin: 0; font-size: 22px; }
+.exp-local { margin: 2px 0 12px; color: var(--azul-escuro); }
+.exp-item ul { margin: 0 0 12px; padding-left: 20px; max-width: 65ch; }
+.exp-aprendizado { max-width: 65ch; margin: 0; }
+
+/* Áreas de interesse */
+.interesses-grade {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 32px;
+}
+.interesse { padding-top: 16px; border-top: 3px solid var(--azul); }
+.interesse h3 { margin: 0 0 8px; font-size: 22px; }
+.interesse p { margin: 0; max-width: 55ch; color: var(--texto-suave); }
+
+@media (max-width: 860px) {
+    .sobre-grade { grid-template-columns: 1fr; gap: 36px; }
+    .sobre-lateral { position: static; flex-direction: row; flex-wrap: wrap; align-items: flex-end; }
+    .sobre-foto { max-width: 280px; }
+}
+
+@media (max-width: 640px) {
+    .exp-item { grid-template-columns: 1fr; gap: 4px; }
+}

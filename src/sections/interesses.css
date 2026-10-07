@@ -1,9 +1,0 @@
-.interesses-grade {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 32px;
-}
-
-.interesse { padding-top: 16px; border-top: 3px solid var(--azul); }
-.interesse h3 { margin: 0 0 8px; font-family: var(--fonte-titulo); font-weight: 400; font-size: 24px; }
-.interesse p { margin: 0; max-width: 55ch; color: var(--texto-suave); }

@@ -1,0 +1,30 @@
+.faixa-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 0;
+    border-top: 1px solid var(--papel-borda);
+}
+
+.faixa-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 4px;
+    color: var(--texto);
+    text-decoration: none;
+}
+.faixa-nav-link--proxima { align-items: flex-end; text-align: right; }
+
+.faixa-nav-dica { font-size: 13px; color: var(--texto-suave); }
+
+.faixa-nav-nome {
+    font-family: var(--fonte-titulo);
+    font-size: 18px;
+    transition: color 0.2s ease;
+}
+.faixa-nav-link:hover .faixa-nav-nome { color: var(--azul-escuro); text-decoration: underline; }
+
+@media (max-width: 520px) {
+    .faixa-nav-nome { font-size: 16px; }
+}

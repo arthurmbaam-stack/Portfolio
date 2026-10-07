@@ -1,0 +1,77 @@
+.inicio-apresentacao { padding: 56px 0 24px; }
+
+.inicio-conteudo {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.inicio-nome {
+    margin: 0 0 12px;
+    font-size: clamp(40px, 8vw, 72px);
+    line-height: 1.05;
+    outline: none;
+}
+
+.inicio-cargo {
+    margin: 0 0 8px;
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: var(--texto-suave);
+}
+
+.inicio-lema {
+    margin: 0;
+    font-family: var(--fonte-titulo);
+    font-style: italic;
+    font-size: clamp(18px, 2.6vw, 22px);
+    color: var(--salvia-escuro);
+}
+
+/* Disco giratório (arrastável) ao lado da apresentação, em tamanho menor */
+.inicio-conteudo .disco { justify-self: center; width: min(280px, 60vw); }
+
+.inicio-colecao { padding: 40px 0 96px; }
+
+.inicio-colecao-titulo {
+    margin: 0 0 4px;
+    font-size: clamp(24px, 4vw, 32px);
+}
+
+.inicio-colecao-dica {
+    margin: 0 0 40px;
+    color: var(--texto-suave);
+    font-size: 15px;
+}
+
+/* Capas em linhas centralizadas: 3 por linha no desktop (3 + 2), 2 no celular */
+.inicio-capas {
+    --espaco: 80px;
+    --por-linha: 3;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 56px var(--espaco);
+}
+
+.inicio-capas li {
+    flex: 0 0 calc((100% - (var(--por-linha) - 1) * var(--espaco)) / var(--por-linha));
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+    .inicio-capas { --espaco: 56px; }
+}
+
+@media (max-width: 760px) {
+    .inicio-apresentacao { padding-top: 32px; }
+    .inicio-conteudo { grid-template-columns: 1fr; text-align: center; }
+    .inicio-capas { --por-linha: 2; --espaco: 36px; gap: 36px var(--espaco); }
+}
+
+@media (max-width: 420px) {
+    .inicio-capas { --espaco: 28px; gap: 28px var(--espaco); }
+}

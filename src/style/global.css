@@ -5,103 +5,185 @@
     --texto: #343b36;
     --texto-suave: #596456;
     --salvia: #a8b5a0;
-    --salvia-escuro: #6f8068;
+    --salvia-claro: #cdd9c5;
+    --salvia-escuro: #5d6e56;
     --azul: #8fa3ad;
-    --azul-escuro: #5f7681;
+    --azul-claro: #d6e5ec;
+    --azul-escuro: #4d6571;
     --vinil: #171717;
 
-    --fonte-titulo: Georgia, 'Times New Roman', serif;
-    --fonte-corpo: Arial, Helvetica, sans-serif;
-    }
+    /* Fraunces tem curvas suaves e um toque retrô, combinando com capas de disco.
+       Se a fonte não carregar, o navegador usa Georgia. */
+    --fonte-titulo: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --fonte-corpo: 'DM Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
+    --fonte-mono: 'DM Mono', ui-monospace, Consolas, monospace;
 
-    *, *::before, *::after { box-sizing: border-box; }
+    --sombra-capa: 6px 8px 0 #00000014, 0 10px 24px #00000018;
+}
 
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+*, *::before, *::after { box-sizing: border-box; }
 
-    body {
+html { scroll-behavior: smooth; }
+
+body {
     margin: 0;
     background: var(--creme);
     color: var(--texto);
     font-family: var(--fonte-corpo);
-    line-height: 1.6;
-    }
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
 
-    img { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 400; line-height: 1.15; }
 
-    a { color: var(--azul-escuro); }
+img { max-width: 100%; display: block; }
 
-    :focus-visible {
+a { color: var(--azul-escuro); }
+
+:focus-visible {
     outline: 3px solid var(--azul-escuro);
     outline-offset: 3px;
-    }
+}
 
-    .container {
+.container {
     width: min(1080px, 100% - 48px);
     margin-inline: auto;
-    }
+}
 
-    .secao { padding: 96px 0; }
-    .secao--alt { background: var(--papel); }
+.secao { padding: 96px 0; }
+.secao--alt { background: var(--papel); }
 
-    .secao-titulo {
+.secao-titulo {
     margin: 0 0 12px;
     font-family: var(--fonte-titulo);
     font-size: clamp(28px, 5vw, 40px);
     font-weight: 400;
-    }
+}
 
-    .secao-intro {
+.secao-intro {
     max-width: 60ch;
     margin: 0 0 48px;
     color: var(--texto-suave);
-    }
+}
 
-    /* Textura de papel bem discreta, usada nas capas e cards */
-    .papel {
+.visualmente-oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* Link de atalho para leitores de tela e teclado */
+.pular-conteudo {
+    position: absolute;
+    left: 16px;
+    top: -60px;
+    z-index: 1100;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--texto);
+    color: var(--creme);
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+.pular-conteudo:focus { top: 12px; }
+
+/* Textura de papel bem discreta, usada nas capas e cards */
+.papel {
     background-color: var(--papel);
     background-image:
-        radial-gradient(#00000009 1px, transparent 1px),
-        radial-gradient(#ffffff40 1px, transparent 1px);
+    radial-gradient(#00000009 1px, transparent 1px),
+    radial-gradient(#ffffff40 1px, transparent 1px);
     background-size: 5px 5px, 7px 7px;
     background-position: 0 0, 2px 3px;
     border: 1px solid var(--papel-borda);
-    }
+}
 
-    /* Botões */
-    .botao {
+/* Botões */
+.botao {
     display: inline-block;
     padding: 12px 24px;
     border-radius: 999px;
     border: 2px solid var(--salvia-escuro);
     font: inherit;
     font-size: 15px;
+    line-height: 1.4;
     text-decoration: none;
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
-    }
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.botao:active { transform: translateY(1px); }
 
-    .botao--primario {
+.botao--primario {
     background: var(--salvia-escuro);
     color: #fff;
-    }
-    .botao--primario:hover { background: #5b6b54; border-color: #5b6b54; }
+}
+.botao--primario:hover { background: #4b5a45; border-color: #4b5a45; }
 
-    .botao--secundario {
+.botao--secundario {
     background: transparent;
     color: var(--salvia-escuro);
-    }
-    .botao--secundario:hover { background: var(--salvia-escuro); color: #fff; }
+}
+.botao--secundario:hover { background: var(--salvia-escuro); color: #fff; }
 
-    .tag {
+.tag {
     display: inline-block;
     padding: 2px 10px;
     border-radius: 999px;
     background: #a8b5a033;
     color: var(--salvia-escuro);
     font-size: 13px;
-    }
+}
 
-    @media (prefers-reduced-motion: reduce) {
+/* Cabeçalho comum das páginas internas */
+.pagina {
+    padding: 56px 0 72px;
+    animation: pagina-entrar 0.5s ease both;
+}
+
+.pagina-topo { margin-bottom: 40px; }
+
+.pagina-faixa {
+    margin: 0 0 4px;
+    font-family: var(--fonte-mono);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+}
+
+.pagina-titulo {
+    margin: 0 0 12px;
+    font-size: clamp(34px, 6vw, 52px);
+    outline: none;
+}
+
+.pagina-intro {
+    max-width: 60ch;
+    margin: 0;
+    color: var(--texto-suave);
+}
+
+.subtitulo {
+    margin: 0 0 16px;
+    font-size: 24px;
+}
+
+@keyframes pagina-entrar {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 640px) {
+    .pagina { padding: 36px 0 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    * { transition: none !important; }
+    *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
     }
+}

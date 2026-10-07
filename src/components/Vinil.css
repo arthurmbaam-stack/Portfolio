@@ -11,9 +11,21 @@
     repeating-radial-gradient(circle, #171717 0px, #171717 3px, #303030 4px, #171717 5px);
     border: 5px solid #202020;
     box-shadow: 0 20px 40px #00000025;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+}
+
+.disco--arrastando {
+    cursor: grabbing;
 }
 
 .disco--girando { animation: disco-girar 6s linear infinite; }
+
+/* Quando estiver sendo arrastado, desativa a animação */
+.disco--arrastando {
+    animation: none !important;
+}
 
 .disco-etiqueta {
     width: 36%;
@@ -26,6 +38,7 @@
     border-radius: 50%;
     background: #a8b5a0;
     color: #263329;
+    pointer-events: none;
 }
 
 .disco-etiqueta span { font-family: Georgia, serif; font-size: clamp(28px, 7vw, 44px); }
@@ -40,10 +53,12 @@
     border-radius: 50%;
     background: #eee9df;
     transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
-@keyframes disco-girar { to { transform: rotate(360deg); } }
+@keyframes disco-girar { to { transform: rotate(300deg); } }
 
 @media (prefers-reduced-motion: reduce) {
     .disco--girando { animation: none; }
+    .disco { cursor: default; }
 }
