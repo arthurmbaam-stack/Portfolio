@@ -40,6 +40,9 @@ function Projetos() {
 
                 <div className="projeto-info">
                 <h2>{p.titulo}</h2>
+                {p.status && (
+                <span className="tag">{p.status}</span>
+                )}
                 <p className="projeto-meta">{p.tipo}</p>
                 <p>{p.descricao}</p>
 

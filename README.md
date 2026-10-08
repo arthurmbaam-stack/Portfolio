@@ -70,19 +70,8 @@
   </tr>
 </table>
 
-<h2>📌 Conteúdo planejado</h2>
 
-<ul>
-  <li>Introdução animada com um disco de vinil.</li>
-  <li>Apresentação pessoal e formação acadêmica.</li>
-  <li>Linha do tempo dos projetos desenvolvidos.</li>
-  <li>Experiências, certificados e objetivos profissionais.</li>
-  <li>Músicas favoritas e player de áudio.</li>
-  <li>Links de contato e formulário para envio de mensagens.</li>
-  <li>Layout responsivo para computadores e celulares.</li>
-</ul>
-
-<h2>🎯 Objetivo</h2>
+<h2> Objetivo</h2>
 
 <p>
   Apresentar meu desenvolvimento acadêmico e profissional enquanto
