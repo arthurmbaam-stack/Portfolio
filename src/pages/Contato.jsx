@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { contato } from '../data/contato'
 import './Contato.css'
-
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
 function Contato() {
     const [status, setStatus] = useState('parado') // parado | enviando | sucesso | erro
 
@@ -41,20 +41,28 @@ function Contato() {
             <a href={`mailto:${contato.email}`}>{contato.email}</a>
             </p>
             <ul className="contato-redes">
-            {contato.redes.map((r) => (
-                <li key={r.nome}>
+            {contato.redes.map((r) => {
+            const icones = {
+            github: FaGithub,
+            instagram: FaInstagram,
+            linkedin: FaLinkedin,
+            }
+            const Icone = icones[r.nome.trim().toLowerCase()]
+            return (
+            <li key={r.nome}>
                 <a
                     className="contato-rede"
                     href={r.url}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
+                    aria-label={`${r.nome} (abre em nova aba)`}
+                    title={r.nome}
                 >
-                    {r.nome}
-                    <span className="visualmente-oculto"> (abre em nova aba)</span>
-                    <span aria-hidden="true">↗</span>
+                    {Icone ? <Icone aria-hidden="true" /> : r.nome}
                 </a>
                 </li>
-            ))}
+                )
+            })}
             </ul>
         </section>
 

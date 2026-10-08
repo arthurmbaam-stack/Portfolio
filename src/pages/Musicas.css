@@ -1,3 +1,6 @@
+/* Player: vinil + player incorporado do Spotify */
+.musicas-player { scroll-margin-top: 72px; }
+
 .player {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -9,36 +12,16 @@
     box-shadow: var(--sombra-capa);
 }
 
-/* Disco que gira enquanto a música toca */
-.player-disco {
-    display: grid;
-    place-items: center;
+/* O vinil reaproveitado do portfólio, menor e parando no lugar quando a música pausa
+   (sem isso ele voltaria de uma vez para o ângulo inicial). */
+.player .disco {
     width: 100%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 4px solid #202020;
-    background:
-    conic-gradient(from 45deg, transparent 0deg, #ffffff18 45deg, transparent 90deg,
-        transparent 180deg, #ffffff18 225deg, transparent 270deg),
-    repeating-radial-gradient(circle, #171717 0 3px, #303030 4px, #171717 5px);
-    box-shadow: 0 14px 28px #00000030;
-    animation: player-girar 5s linear infinite;
+    animation: disco-girar 6s linear infinite;
     animation-play-state: paused;
 }
-.player-disco--tocando { animation-play-state: running; }
+.player .disco--girando { animation-play-state: running; }
 
-.player-rotulo {
-    display: grid;
-    place-items: center;
-    width: 36%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: var(--salvia);
-    color: #263329;
-    font-family: var(--fonte-mono);
-    font-size: 15px;
-    box-shadow: inset 0 0 0 5px var(--salvia), inset 0 0 0 7px #00000012;
-}
+.player-painel { min-width: 0; }
 
 .player-faixa {
     margin: 0 0 4px;
@@ -48,51 +31,46 @@
     text-transform: uppercase;
     color: var(--texto-suave);
 }
-.player-titulo { margin: 0; font-size: clamp(24px, 4vw, 32px); }
-.player-artista { margin: 0 0 18px; color: var(--azul-escuro); }
-
-.player-controles { display: flex; align-items: center; gap: 12px; }
-
-.player-botao {
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border: 2px solid var(--salvia-escuro);
-    border-radius: 50%;
-    background: transparent;
-    color: var(--salvia-escuro);
-    cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+.player-titulo {
+    margin: 0;
+    font-size: clamp(24px, 4vw, 32px);
+    }
+.player-artista { margin: 0 0 18px;
+    color: var(--azul-escuro);
 }
-.player-botao svg { width: 20px; height: 20px; fill: currentColor; }
-.player-botao:hover:not(:disabled) { background: var(--salvia-escuro); color: #fff; }
-.player-botao:active:not(:disabled) { transform: scale(0.95); }
-.player-botao:disabled { opacity: 0.4; cursor: not-allowed; }
 
-.player-botao--principal {
-    width: 56px;
-    height: 56px;
-    background: var(--salvia-escuro);
-    color: #fff;
-}
-.player-botao--principal svg { width: 24px; height: 24px; }
-.player-botao--principal:hover:not(:disabled) { background: #4b5a45; }
+.player-embed { display: block;
+    width: 100%; max-width: 520px;
+    margin-top:18px;
+    border: 0;
+    border-radius: 12px; }
+.player-embed iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 12px; }
 
-.player-barras { display: grid; gap: 10px; margin-top: 18px; max-width: 520px; }
-
-.player-progresso { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; }
-.player-tempo { font-family: var(--fonte-mono); font-size: 13px; color: var(--texto-suave); }
-
-.player-volume { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--texto-suave); }
-.player-volume input { width: 140px; }
-
-.player input[type='range'] { accent-color: var(--salvia-escuro); width: 100%; }
-
-.player-spotify { width: 100%; max-width: 520px; margin-top: 18px; border: 0; border-radius: 12px; }
-
+.player-estado { margin: 12px 0 0;
+    font-family: var(--fonte-titulo);
+    font-size: 17px; }
+.player-nota { margin: 8px 0 0;
+    max-width: 60ch; font-size: 13px;
+    color: var(--texto-suave); }
 .player-aviso { margin: 18px 0 0; color: var(--texto-suave); }
+
+/* Link para o Spotify com o logo oficial (mínimo 70px, versão preta em fundo claro) */
+.spotify-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 10px 0;
+    color: var(--texto-claro);
+    font-size: 15px;
+    text-decoration: none;
+}
+.spotify-link img { width: 70px; height: auto; }
+.spotify-link:hover span:not(.visualmente-oculto) { text-decoration: underline; }
 
 /* Lista de faixas */
 .musicas-subtitulo { margin: 56px 0 20px; }
@@ -135,11 +113,16 @@
 .musica h3 { margin: 0; font-size: 20px; }
 .musica-artista { margin: 0 0 8px; color: var(--azul-escuro); font-size: 14px; }
 .musica-comentario { max-width: 60ch; margin: 0 0 6px; }
-.musica a { font-size: 15px; }
-
-@keyframes player-girar { to { transform: rotate(360deg); } }
+.musica h3 + .musica-comentario { margin-top: 6px; } /* playlist: sem linha de artista */
 
 @media (max-width: 720px) {
     .player { grid-template-columns: 1fr; padding: 20px; gap: 24px; }
-    .player-disco { width: min(180px, 55vw); margin-inline: auto; }
+    .player .disco { width: min(180px, 55vw); margin-inline: auto; }
 }
+.musicas-player {
+    border-radius: 6px;
+    background-color: var(--cor-fundo, var(--azul-claro));
+    box-shadow: var(--sombra-capa);
+    transition: background-color 0.6s ease;
+}
+.player { background-color: transparent; box-shadow: none; }
