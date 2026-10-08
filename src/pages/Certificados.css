@@ -74,3 +74,24 @@
     .cert-dialogo-caixa { padding: 14px; }
     .cert-dialogo-topo { flex-direction: column; }
 }
+.cert-previa {
+    display: block;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f6f2ea;
+}
+
+.cert-previa img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    padding: 12px;
+    box-sizing: border-box;
+    object-fit: contain;
+    transition: transform 0.2s;
+}
+
+.cert-previa:hover img {
+    transform: scale(1.03);
+}

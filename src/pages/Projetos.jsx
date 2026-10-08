@@ -40,6 +40,9 @@ function Projetos() {
 
                 <div className="projeto-info">
                 <h2>{p.titulo}</h2>
+                {p.reconhecimento && (
+                <span className="tag">{p.reconhecimento}</span>
+                )}
                 {p.status && (
                 <span className="tag">{p.status}</span>
                 )}
