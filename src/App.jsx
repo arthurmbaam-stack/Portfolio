@@ -12,6 +12,8 @@ import Sobre from './pages/Sobre'
 import Projetos from './pages/Projetos'
 import Certificados from './pages/Certificados'
 import Musicas from './pages/Musicas'
+import Canvas from './pages/Canvas'
+import GitHub from './pages/Github'
 import Contato from './pages/Contato'
 
 const paginas = {
@@ -20,6 +22,8 @@ const paginas = {
   '/projetos': Projetos,
   '/certificados': Certificados,
   '/musicas': Musicas,
+  '/canvas': Canvas,
+  '/GitHub': GitHub,
   '/contato': Contato,
 }
 
