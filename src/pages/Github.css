@@ -1,0 +1,487 @@
+/* Página de GitHub. Tudo usa o prefixo "gh-" ou fica dentro de ".github",
+   então nada aqui muda estilos globais nem outras páginas. As cores, fontes e
+   classes (pagina, papel, botao, tag, subtitulo) vêm do global.css. */
+
+.github {
+    --gh-nivel-0: #e4dfd2;
+    --gh-nivel-1: #cdd9c5;
+    --gh-nivel-2: #a8b5a0;
+    --gh-nivel-3: #7d9273;
+    --gh-nivel-4: #4f6148;
+    --gh-trilho: #e4dfd2;
+}
+
+.github .papel { border-radius: 6px; }
+
+/* Abas */
+.gh-abas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.gh-aba {
+    min-height: 44px;
+    padding: 8px 20px;
+    border: 2px solid var(--salvia-escuro);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--salvia-escuro);
+    font: inherit;
+    font-size: 15px;
+    line-height: 1.3;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+.gh-aba:hover { background: #a8b5a033; }
+.gh-aba--ativa,
+.gh-aba--ativa:hover {
+    background: var(--salvia-escuro);
+    color: #fff;
+}
+
+.gh-painel { min-height: 240px; }
+.gh-painel > .subtitulo { margin-bottom: 20px; }
+
+.gh-resumo {
+    max-width: 70ch;
+    margin: 0 0 24px;
+}
+
+.gh-nota {
+    max-width: 75ch;
+    margin: 24px 0 0;
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+
+/* Estados */
+.gh-estado { margin: 0 0 24px; color: var(--texto-suave); }
+.gh-estado.papel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    color: var(--texto);
+}
+.gh-estado.papel p { margin: 0; max-width: 60ch; }
+.gh-estado--limite { border-left: 6px solid #c9bd9a; }
+.gh-estado--erro { border-left: 6px solid var(--azul); }
+
+.gh-vazio { margin: 0 0 24px; color: var(--texto-suave); }
+
+.gh-aviso {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+    padding: 16px 20px;
+    border-left: 6px solid #c9bd9a;
+}
+.gh-aviso p { margin: 0; max-width: 60ch; }
+
+/* Perfil */
+.gh-perfil {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 20px 24px;
+    box-shadow: var(--sombra-capa);
+}
+
+.gh-avatar {
+    flex: none;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 4px solid var(--vinil);
+    background: var(--salvia-claro);
+}
+
+.gh-perfil-texto { min-width: 0; }
+.gh-perfil-nome { margin: 0; font-family: var(--fonte-titulo); font-size: 22px; }
+.gh-perfil-nome a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--fonte-corpo);
+    font-size: 15px;
+}
+.gh-perfil-bio { margin: 4px 0 0; color: var(--texto-suave); }
+.gh-perfil-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    margin: 8px 0 0;
+    font-family: var(--fonte-mono);
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+
+/* Indicadores */
+.gh-indicadores {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 16px;
+}
+
+.gh-indicador {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 16px 18px;
+    animation: pagina-entrar 0.5s ease both;
+}
+.gh-indicador:nth-child(2) { animation-delay: 0.04s; }
+.gh-indicador:nth-child(3) { animation-delay: 0.08s; }
+.gh-indicador:nth-child(4) { animation-delay: 0.12s; }
+
+.gh-indicador-rotulo {
+    font-family: var(--fonte-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+}
+.gh-indicador-valor {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(26px, 4vw, 32px);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+.gh-indicador-nota { font-size: 13px; color: var(--texto-suave); }
+
+/* Linguagens: disco de vinil + legenda */
+.gh-linguagens {
+    display: grid;
+    grid-template-columns: minmax(200px, 280px) 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.gh-disco { width: 100%; }
+.gh-disco-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 20px 40px #00000025;
+    animation: gh-girar-entrada 0.9s ease both;
+}
+
+@keyframes gh-girar-entrada {
+    from { transform: rotate(-40deg); opacity: 0; }
+    to { transform: none; opacity: 1; }
+}
+
+.gh-legenda { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.gh-legenda li {
+    display: grid;
+    grid-template-columns: 14px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--papel-borda);
+}
+.gh-legenda-cor { width: 14px; height: 14px; border-radius: 50%; }
+.gh-legenda-nome { font-weight: 500; overflow-wrap: anywhere; }
+.gh-legenda-valor { font-family: var(--fonte-mono); font-size: 13px; color: var(--texto-suave); text-align: right; }
+
+/* Atividade: sequências */
+.gh-sequencias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+.gh-sequencia {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 18px 20px;
+    text-align: center;
+}
+.gh-sequencia-valor { font-family: var(--fonte-titulo); font-size: clamp(28px, 5vw, 36px); line-height: 1.2; }
+.gh-sequencia-rotulo { font-weight: 500; }
+.gh-sequencia-nota { font-size: 13px; color: var(--texto-suave); }
+
+/* Atividade: calendário (cada bolinha é um dia) */
+.gh-calendario { margin: 0 0 32px; }
+.gh-calendario-rolagem { overflow-x: auto; padding-bottom: 6px; }
+
+.gh-calendario-quadro {
+    display: grid;
+    grid-template-columns: 30px max-content;
+    grid-template-rows: 16px auto;
+    column-gap: 6px;
+    row-gap: 4px;
+    width: max-content;
+}
+
+.gh-calendario-meses {
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: repeat(var(--semanas), 13px);
+    gap: 3px;
+    font-family: var(--fonte-mono);
+    font-size: 11px;
+    color: var(--texto-suave);
+}
+.gh-calendario-meses span { white-space: nowrap; }
+
+.gh-calendario-dias {
+    grid-column: 1;
+    grid-row: 2;
+    display: grid;
+    grid-template-rows: repeat(7, 13px);
+    gap: 3px;
+    font-family: var(--fonte-mono);
+    font-size: 11px;
+    line-height: 13px;
+    color: var(--texto-suave);
+}
+
+.gh-calendario-grade {
+    grid-column: 2;
+    grid-row: 2;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(7, 13px);
+    grid-auto-columns: 13px;
+    gap: 3px;
+}
+
+.gh-celula {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--gh-nivel-0);
+}
+.gh-calendario-grade .gh-celula { width: auto; height: auto; }
+.gh-celula[data-nivel='1'] { background: var(--gh-nivel-1); }
+.gh-celula[data-nivel='2'] { background: var(--gh-nivel-2); }
+.gh-celula[data-nivel='3'] { background: var(--gh-nivel-3); }
+.gh-celula[data-nivel='4'] { background: var(--gh-nivel-4); }
+.gh-celula--fora { background: transparent !important; }
+.gh-celula--ativa { outline: 2px solid var(--azul-escuro); outline-offset: 1px; }
+
+.gh-calendario-rodape {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 24px;
+    margin-top: 10px;
+}
+.gh-calendario-legenda {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--fonte-mono);
+    font-size: 12px;
+    color: var(--texto-suave);
+}
+.gh-calendario-legenda .gh-celula { margin: 0 1px; }
+
+.gh-leitura {
+    min-height: 1.65em;
+    margin: 0;
+    font-family: var(--fonte-mono);
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+
+/* Blocos de gráfico */
+.gh-bloco { margin-bottom: 24px; padding: 20px 24px 24px; min-width: 0; }
+.gh-bloco-titulo { margin: 0 0 16px; font-size: 20px; }
+.gh-duo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+.gh-duo .gh-bloco { margin-bottom: 0; }
+
+/* Colunas (contribuições por ano e commits por horário) */
+.gh-colunas { margin: 0; }
+
+.gh-colunas-area {
+    display: grid;
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    gap: 4px;
+    height: 180px;
+    padding: 22px 8px 0;
+    border-bottom: 2px solid var(--vinil);
+    align-items: end;
+}
+.gh-colunas--anos .gh-colunas-area { gap: 14px; }
+
+.gh-coluna { position: relative; height: 100%; cursor: default; }
+
+.gh-coluna-barra {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: max(var(--h), 3px);
+    border-radius: 3px 3px 0 0;
+    background: var(--salvia);
+    transform-origin: bottom;
+    animation: gh-crescer 0.6s ease both;
+    animation-delay: calc(var(--i) * 25ms);
+    transition: background 0.2s ease;
+}
+.gh-coluna--pico .gh-coluna-barra { background: var(--salvia-escuro); }
+.gh-coluna--ativa .gh-coluna-barra { background: var(--azul-escuro); }
+
+.gh-coluna-topo {
+    position: absolute;
+    left: 50%;
+    bottom: calc(max(var(--h), 3px) + 4px);
+    transform: translateX(-50%);
+    font-family: var(--fonte-mono);
+    font-size: 12px;
+    white-space: nowrap;
+    color: var(--texto);
+}
+
+@keyframes gh-crescer { from { transform: scaleY(0); } }
+
+.gh-colunas-eixo {
+    display: grid;
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    gap: 4px;
+    padding: 6px 8px 0;
+    font-family: var(--fonte-mono);
+    font-size: 11px;
+    color: var(--texto-suave);
+}
+.gh-colunas--anos .gh-colunas-eixo { gap: 14px; }
+.gh-colunas-eixo span { overflow: visible; white-space: nowrap; text-align: center; }
+
+.gh-colunas .gh-leitura { margin-bottom: 8px; }
+
+/* Commits por dia da semana e por período */
+.gh-semana,
+.gh-periodos { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+
+.gh-dia {
+    display: grid;
+    grid-template-columns: 44px 1fr 70px;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+.gh-dia-nome { font-family: var(--fonte-mono); font-size: 13px; }
+.gh-dia-valor { font-family: var(--fonte-mono); font-size: 13px; text-align: right; }
+
+.gh-periodo {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 'nome valor' 'faixa faixa' 'trilho trilho';
+    gap: 2px 12px;
+}
+.gh-periodo-nome { grid-area: nome; font-weight: 500; }
+.gh-periodo-faixa { grid-area: faixa; font-family: var(--fonte-mono); font-size: 12px; color: var(--texto-suave); }
+.gh-periodo-valor { grid-area: valor; font-family: var(--fonte-mono); font-size: 13px; }
+.gh-periodo .gh-trilho { grid-area: trilho; margin-top: 4px; }
+
+.gh-trilho {
+    display: block;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--gh-trilho);
+    overflow: hidden;
+}
+.gh-trilho-barra {
+    display: block;
+    height: 100%;
+    width: var(--rel);
+    border-radius: 999px;
+    background: var(--salvia);
+    transform-origin: left;
+    animation: gh-crescer-x 0.6s ease both;
+    animation-delay: calc(var(--i) * 60ms);
+}
+.gh-dia--pico .gh-trilho-barra,
+.gh-periodo--pico .gh-trilho-barra { background: var(--salvia-escuro); }
+
+@keyframes gh-crescer-x { from { transform: scaleX(0); } }
+
+/* Aviso de amostragem */
+.gh-amostra {
+    margin: 0 0 24px;
+    padding: 16px 20px;
+    border-left: 6px solid #c9bd9a;
+    font-size: 14px;
+}
+.gh-amostra--exata { border-left-color: var(--salvia); }
+.gh-amostra p { margin: 0 0 6px; max-width: 80ch; }
+.gh-amostra p:last-child { margin-bottom: 0; color: var(--texto-suave); }
+
+.gh-repos-analisados { margin-top: 24px; }
+.gh-repos-analisados summary,
+.gh-metodologia summary { cursor: pointer; font-weight: 500; }
+.gh-tags { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Repositórios */
+.gh-repos { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.gh-repo { padding: 16px 20px; animation: pagina-entrar 0.5s ease both; }
+
+.gh-repo-topo { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.gh-repo-nome { font-family: var(--fonte-titulo); font-size: 19px; overflow-wrap: anywhere; }
+.gh-repo-meta { display: inline-flex; gap: 14px; font-family: var(--fonte-mono); font-size: 13px; color: var(--texto-suave); }
+.gh-repo-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.gh-repo-descricao { margin: 6px 0 0; color: var(--texto-suave); max-width: 70ch; }
+.gh-repo-rodape {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 12px;
+    margin: 10px 0 0;
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+.gh-ver-mais { margin-top: 20px; }
+
+/* Metodologia */
+.gh-metodologia { margin-top: 48px; padding: 18px 24px; }
+.gh-metodologia dl { margin: 16px 0 0; display: grid; gap: 16px; }
+.gh-metodologia dt { font-family: var(--fonte-titulo); font-size: 17px; }
+.gh-metodologia dd { margin: 2px 0 0; max-width: 75ch; font-size: 14px; color: var(--texto-suave); }
+
+/* Telas menores */
+@media (max-width: 760px) {
+    .gh-linguagens { grid-template-columns: 1fr; justify-items: center; gap: 28px; }
+    .gh-disco { max-width: 240px; }
+    .gh-legenda { width: 100%; }
+    .gh-duo { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+    .gh-perfil { flex-direction: column; align-items: flex-start; }
+    .gh-bloco { padding: 16px; }
+    .gh-colunas-area { gap: 2px; padding-inline: 2px; height: 150px; }
+    .gh-colunas-eixo { gap: 2px; padding-inline: 2px; font-size: 10px; }
+    .gh-colunas--anos .gh-colunas-area,
+    .gh-colunas--anos .gh-colunas-eixo { gap: 8px; }
+    .gh-dia { grid-template-columns: 38px 1fr 56px; gap: 8px; }
+    .gh-legenda li { grid-template-columns: 14px 1fr; }
+    .gh-legenda-valor { grid-column: 2; text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gh-disco-svg,
+    .gh-coluna-barra,
+    .gh-trilho-barra { animation: none; }
+}
