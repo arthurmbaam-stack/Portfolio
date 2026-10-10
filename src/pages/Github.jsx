@@ -1,5 +1,12 @@
-import { Component, useEffect, useMemo, useRef, useState } from 'react'
-import { FaCodeBranch, FaGithub, FaStar } from 'react-icons/fa'
+import { Component,
+    useEffect,
+    useMemo,
+    useRef,
+    useState } from 'react'
+import {
+    FaCodeBranch,
+    FaGithub,
+    FaStar } from 'react-icons/fa'
 import CONFIG from '../config/GithubConfig'
 import {
     SECOES,
@@ -10,7 +17,7 @@ import {
     COR_OUTRAS,
     TEXTOS,
     METODOLOGIA,
-} from '../data/Github'
+} from '../data/github'
 import {
     GitHubLimiteError,
     agruparOutras,
@@ -21,6 +28,13 @@ import {
     resumirLinguagens,
 } from '../utils/GithubStats'
 import './Github.css'
+import {
+    fetchWakaTimeStats,
+    formatDuration,
+    formatDate,
+} from '../utils/Wakatime'
+import Wakatime from '../components/Wakatime'
+
 
 const { USUARIO, URL_PERFIL, IDIOMA, FUSO_HORARIO, LIMITES } = CONFIG
 
@@ -316,7 +330,7 @@ function Resumo() {
                     rotulo="Dias com contribuição"
                     estado={contribuicoes}
                     valor={(c) => numero(c.janela.diasAtivos)}
-                    nota={() => 'Desde a criação da conta, no calendário do perfil'}
+                    nota={(c) => `${data(c.janela.inicio)} a ${data(c.hoje)}`}
                 />
                 <Indicador
                     rotulo="Maior sequência"
@@ -434,13 +448,10 @@ function LinguagensConteudo({ dados }) {
 }
 
 function Linguagens() {
-    const perfil = useFonte(perfilFonte)
-    if (perfil.status !== 'pronto') return <Estado estado={perfil} />
-    return <LinguagensConteudo dados={perfil.dados} />
+    return <Wakatime />
 }
-
 /* =====================================================================
-   Atividade: sequências, calendário e contribuições por ano
+Atividade: sequências, calendário e contribuições por ano
    ===================================================================== */
 
 function Sequencias({ dados }) {
@@ -454,7 +465,7 @@ function Sequencias({ dados }) {
         <div className="gh-sequencias">
             <div className="gh-sequencia papel">
                 <span className="gh-sequencia-valor">{numero(janela.total)}</span>
-                <span className="gh-sequencia-rotulo">contribuições em 12 meses</span>
+                <span className="gh-sequencia-rotulo">Contribuição total</span>
                 <span className="gh-sequencia-nota">
                     {data(janela.inicio)} a {data(janela.fim)}
                 </span>
@@ -615,7 +626,7 @@ function Atividade() {
             <Calendario dados={dados} />
             <PorAno anos={dados.anos} hoje={dados.hoje} />
             <p className="gh-nota">
-                Fonte: calendário público do perfil, lido por uma API de terceiros. {TEXTOS.diferencaContribuicoes}
+                Fonte: calendário público do perfil. {TEXTOS.diferencaContribuicoes}
             </p>
         </>
     )
@@ -647,7 +658,6 @@ function HorariosConteudo({ dados }) {
 
             <div className={`gh-amostra papel ${exato ? 'gh-amostra--exata' : ''}`} role="note">
                 <p>
-                    <strong>{exato ? 'commits-desde-criacao' : 'Amostra: valores estimados.'}</strong>{' '}
                     {exato
                         ? `Todos os ${plural(total, 'commit público', 'commits públicos')} de ${data(dados.inicio)} a ${data(dados.fim)} foram analisados.`
                         : `Foram analisados ${numero(analisados)} dos ${plural(total, 'commit público', 'commits públicos')} de ${data(dados.inicio)} a ${data(dados.fim)}. A busca do GitHub devolve no máximo 100 commits por página, então, nos trimestres com mais commits, só os mais recentes entram. Cada commit analisado representa os demais do trimestre, e os números com ≈ são estimativas, não contagens exatas.`}

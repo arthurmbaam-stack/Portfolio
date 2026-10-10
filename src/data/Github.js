@@ -2,7 +2,7 @@
 
 export const SECOES = [
     { id: 'resumo', rotulo: 'Resumo', descricao: 'Perfil e números gerais' },
-    { id: 'linguagens', rotulo: 'Linguagens', descricao: 'Linguagem principal de cada repositório' },
+    { id: 'linguagens', rotulo: 'Linguagens', descricao: 'Linguagens mais usadas e estatísticas do wakatime' },
     { id: 'atividade', rotulo: 'Atividade', descricao: 'Contribuições ao longo do tempo' },
     { id: 'horarios', rotulo: 'Horários', descricao: 'Quando os commits acontecem' },
     { id: 'repositorios', rotulo: 'Repositórios', descricao: 'Repositórios públicos' },
@@ -69,14 +69,9 @@ export const METODOLOGIA = [
             'Vêm da API pública do GitHub (usuário e lista de repositórios). Só entram repositórios públicos próprios; forks de outros projetos ficam de fora. A linguagem de cada repositório é a principal detectada pelo GitHub: o gráfico conta repositórios, não linhas de código.',
     },
     {
- titulo: 'Commits por dia da semana e horário',
-    texto:
-        'A análise consulta commits públicos desde a criação da conta até hoje. Os horários são convertidos para America/Sao_Paulo.',
-    },
-    {
         titulo: 'Commits por dia da semana e horário',
         texto:
-            'Vêm da busca pública de commits do GitHub, dos últimos 12 meses, em quatro trimestres. A busca devolve no máximo 100 commits por página, então, se um trimestre tiver mais que isso, só os mais recentes dele são analisados e os valores viram estimativas (marcadas com ≈). Os horários são convertidos para America/Sao_Paulo.',
+        'A análise consulta commits públicos desde a criação da conta até hoje. Os horários são convertidos para America/Sao_Paulo.',
     },
     {
         titulo: 'O que não aparece',

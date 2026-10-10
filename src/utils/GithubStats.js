@@ -1,5 +1,5 @@
 import CONFIG from '../config/GithubConfig'
-import { PERIODOS_DIA } from '../data/Github'
+import { PERIODOS_DIA } from '../data/github'
 
 // Consulta o GitHub (só dados públicos, direto do navegador), organiza as
 // respostas e calcula as estatísticas da página de GitHub.
@@ -457,15 +457,13 @@ export function resumirContribuicoes(contribuicoes, hoje = chaveDoDia(), janela 
     // Uma entrada por dia, em ordem, só até hoje
     const porDia = new Map()
     contribuicoes.forEach(({ date, count }) => {
-        if (typeof date === 'string' && date <= hoje) porDia.set(date, Number(count) || 0)
+        if (typeof date === 'string' && date >= '2026-03-01' && date <= hoje) porDia.set(date, Number(count) || 0)
     })
     const dias = [...porDia]
         .sort(([a], [b]) => (a < b ? -1 : 1))
         .map(([data, quantidade]) => ({ data, quantidade }))
 
-    const inicioJanela = janela === null
-    ? (dias[0]?.data ?? hoje)
-    : somarDias(hoje, -(janela - 1))
+    const inicioJanela = '2026-03-01'
     let total = 0
     let diasAtivos = 0
     let primeiraData = null
@@ -547,7 +545,7 @@ export function resumirContribuicoes(contribuicoes, hoje = chaveDoDia(), janela 
 }
 
     export const contribuicoesFonte = criarFonte(
-        'contribuicoes-historico-completo',
+        'contribuicoes-historico-completo_v2',//A v2 foi criada para corrigir a contagem de dias ativos na janela, que estava errada na v1
     async () => {
         let resposta
         try {
